@@ -21,7 +21,7 @@ const accessLogStream = rfs.createStream("access.log", {
   path: logsDirectory,
 });
 
-// Set up Morgan middleware to log requests to the console and to a file
+
 app.use(morgan("combined", { stream: accessLogStream }));
 
 // cors origin :
