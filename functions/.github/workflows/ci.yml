@@ -12,12 +12,15 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+        with:
+          path: functions   # Specify the path to checkout
 
       - name: Login to Docker Hub
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Build and push Docker image
         run: |
+          cd functions   # Change directory to functions
           docker build -t anand382/tasty-bites-01:latest .
           docker push anand382/tasty-bites-01:latest
           
